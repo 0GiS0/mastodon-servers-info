@@ -1,0 +1,30 @@
+<h1>{{servers.length}} Mastodon servers available</h1>
+<!-- <p>Here are some links to help you get started:</p> -->
+<ul class="filters">
+    <li><a href="#" style="text-decoration:none;color:white;">Most updated servers</a></li>
+    <li><a href="#" style="text-decoration:none;color:white;">Servers with more users</a></li>
+</ul>
+<div class="card-container">
+    <div id="features-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-12-medium" *ngFor="let server of servers">
+                    <!-- Box -->
+                    <section class="box feature">
+                        <div class="inner">
+                            <header>
+                                <h2>{{server.domain}} (v. <span class="mVersion {{howOld(server.version)}}">{{server.version}}</span>)</h2>
+                            </header>
+                            <img src="{{server.proxied_thumbnail}}" width="50%" />
+                            <p><strong>Language</strong>: {{server.language}}</p>
+                            <p><strong>Category</strong>: {{server.category}}</p>
+                            <p><strong>Description</strong>: {{server.description}}</p>
+                            <p><strong>Total users</strong>: {{server.total_users | number}}</p>
+                            <p><strong>Last week users</strong>: {{server.last_week_users | number}}</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

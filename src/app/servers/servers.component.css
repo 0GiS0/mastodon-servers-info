@@ -1,0 +1,36 @@
+/* Filters */
+.filters{
+    list-style: none;
+}
+
+.filters li{   
+   display: inline;
+   background-color: #1976d2;
+   border-radius: 4px;
+   margin:5px;
+   padding: 10px;  
+}
+
+.filter a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+/* Mastodon versions */
+.mVersion {
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.tooOld {
+    background-color: brown;
+    color: white;
+}
+
+.isOk {
+    background-color: darkseagreen;
+}
+
+.isSomeOld {
+    background-color: chocolate;
+}
