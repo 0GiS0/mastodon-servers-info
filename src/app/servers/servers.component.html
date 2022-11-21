@@ -1,6 +1,7 @@
 <h1>{{servers.length}} Mastodon servers available</h1>
 <!-- <p>Here are some links to help you get started:</p> -->
 <ul class="filters">
+    <li><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)"/></li>    
     <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')">Most updated servers</a></li>    
     <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" >Servers with more users</a></li>
     <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')" >Servers with more users by week</a></li>    

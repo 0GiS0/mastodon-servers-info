@@ -11,6 +11,14 @@
    padding: 10px;  
 }
 
+.filters li input[type="text"]{       
+    background-color: #fff !important;
+    border:#fff;
+    /* border-radius: 4px;
+    margin:5px;
+    padding: 10px;   */
+ }
+
 @media (max-width: 600px) {
     .filters li{   
         display: list-item;        
