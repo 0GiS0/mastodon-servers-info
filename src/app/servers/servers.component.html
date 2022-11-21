@@ -1,10 +1,11 @@
 <h1>{{servers.length}} Mastodon servers available</h1>
 <!-- <p>Here are some links to help you get started:</p> -->
 <ul class="filters">
-    <li><a href="#" style="text-decoration:none;color:white;">Most updated servers</a></li>
-    <li><a href="#" style="text-decoration:none;color:white;">Servers with more users</a></li>
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')">Most updated servers</a></li>    
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" >Servers with more users</a></li>
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')" >Servers with more users by week</a></li>    
 </ul>
-<div class="card-container">
+<div class="card-container" style="margin-top: 60px;">
     <div id="features-wrapper">
         <div class="container">
             <div class="row">

@@ -11,6 +11,14 @@
    padding: 10px;  
 }
 
+@media (max-width: 600px) {
+    .filters li{   
+        display: list-item;        
+        border-radius: 4px;        
+        padding: 10px; 
+     }
+  }
+
 .filter a {
     text-decoration: none !important;
     color: white !important;
