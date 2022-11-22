@@ -1,7 +1,7 @@
 
 .container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     column-gap: 30px;
     row-gap: 30px;
 }
@@ -48,7 +48,22 @@
     color: #fff;
 }
 
-@media (max-width: 600px) {
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV
+*/
+
+/* Mobile devices */
+@media screen and (max-width: 480px){
+
+    .filters {
+        list-style: none;
+        margin-left: -30px;
+    }
+
     .filters li {
         display: list-item;
         border-radius: 4px;
@@ -62,6 +77,95 @@
         row-gap: 15px;
     }
 }
+
+/* iPads, Tablets */
+/* @media screen and (max-width: 820px){
+
+    .filters {
+        list-style: none;
+        margin-left: -30px;
+    }
+
+    .filters li {
+        display: list-item;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .container {
+        
+        grid-template-columns: auto auto;
+        
+        row-gap: 15px;
+    }
+} */
+
+/* Small screens, laptops */
+/* @media screen and (max-width: 1024px){
+
+    .filters {
+        list-style: none;
+        margin-left: -30px;
+    }
+
+    .filters li {
+        display: list-item;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .container {
+        
+        grid-template-columns: auto auto;
+        
+        row-gap: 15px;
+    }
+}
+
+
+
+@media screen and (max-width: 1200px){
+
+    .filters {
+        list-style: none;
+        margin-left: -30px;
+    }
+
+    .filters li {
+        display: list-item;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .container {
+        
+        grid-template-columns: auto auto auto;
+        
+        row-gap: 15px;
+    }
+}
+
+
+@media screen and (min-width: 1201px){
+
+    .filters {
+        list-style: none;
+        margin-left: -30px;
+    }
+
+    .filters li {
+        display: list-item;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .container {
+        
+        grid-template-columns: auto auto auto;
+        
+        row-gap: 15px;
+    }
+} */
 
 .filter a {
     text-decoration: none !important;

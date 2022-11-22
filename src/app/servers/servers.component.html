@@ -14,29 +14,31 @@
 </ul>
 <div class="container" style="margin-top: 60px;">
     <!-- <div id="wrapper"> -->
-        <!-- <div class="container"> -->
-            <!-- <div class="row"> -->
-                <div class="server" *ngFor="let server of servers">
-                    <!-- Box -->
-                    <section >
-                        <div class="inner">
-                            <header>
-                                <h2>{{server.domain}} (v. <span
-                                        class="mVersion {{howOld(server.version)}}">{{server.version}}</span>)</h2>
-                            </header>
-                            <img src="{{server.proxied_thumbnail}}" width="50%" />
-                            <p><strong>Language</strong>: {{server.language}}</p>
-                            <p><strong>Category</strong>: {{server.category}}</p>
-                            <p><strong>Approval required</strong>: {{server.approval_required}}</p>
-                            <p><strong>Description</strong>: {{server.description}}</p>
-                            <p><strong>Total users</strong>: {{server.total_users | number}}</p>
-                            <p><strong>Last week users</strong>: {{server.last_week_users | number}}</p>
-                            <p><strong>Latency</strong>: <span
-                                    class="{{server.latency > 400 ? 'high' : 'low' }}">{{server.latency}} ms.</span></p>
-                        </div>
-                    </section>
-                </div>
-            <!-- </div> -->
-        <!-- </div> -->
+    <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+    <div class="server" *ngFor="let server of servers">
+        <!-- Box -->
+        <section>
+            <div class="inner">
+                <header>
+                    <h2>{{server.domain}} (v. <span
+                            class="mVersion {{howOld(server.version)}}">{{server.version}}</span>)</h2>
+                </header>
+                <img src="{{server.proxied_thumbnail}}" width="50%" />
+                <p><strong>Language</strong>: {{server.language}}</p>
+                <p><strong>Category</strong>: {{server.category}}</p>
+                <p><strong>Approval required</strong>: {{server.approval_required}}</p>
+                <p><strong>Description</strong>: {{server.description}}</p>
+                <p><strong>Total users</strong>: {{server.total_users | number}}</p>
+                <p><strong>Last week users</strong>: {{server.last_week_users | number}}</p>
+                <p><strong>Latency</strong>: <span class="{{server.latency > 400 ? 'high' : 'low' }}">{{server.latency}}
+                        ms.</span></p>
+                <p><a href="https://{{server.domain}}" target="_blank">{{server.aproval_required ? 'Apply for an
+                        account':'Create an account'}}</a></p>
+            </div>
+        </section>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
     <!-- </div> -->
 </div>
