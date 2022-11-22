@@ -19,6 +19,18 @@
     padding: 10px;   */
  }
 
+ .high{
+    background-color: darkred;
+    padding: 2px;
+    color: #fff;
+ }
+
+ .low{
+    background-color: darkgreen;
+    padding: 2px;
+    color: #fff;
+ }
+
 @media (max-width: 600px) {
     .filters li{   
         display: list-item;        

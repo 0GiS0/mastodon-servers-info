@@ -1,10 +1,13 @@
 <h1>{{servers.length}} Mastodon servers available</h1>
 <!-- <p>Here are some links to help you get started:</p> -->
 <ul class="filters">
-    <li><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)"/></li>    
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')">Most updated servers</a></li>    
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" >Servers with more users</a></li>
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')" >Servers with more users by week</a></li>    
+    <li><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)" /></li>
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')" class="isActive()">Most
+            updated servers</a></li>
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" class="isActive()">Servers
+            with more users</a></li>
+    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')"
+            class="isActive()">Servers with more users by week</a></li>
 </ul>
 <div class="card-container" style="margin-top: 60px;">
     <div id="features-wrapper">
@@ -15,7 +18,8 @@
                     <section class="box feature">
                         <div class="inner">
                             <header>
-                                <h2>{{server.domain}} (v. <span class="mVersion {{howOld(server.version)}}">{{server.version}}</span>)</h2>
+                                <h2>{{server.domain}} (v. <span
+                                        class="mVersion {{howOld(server.version)}}">{{server.version}}</span>)</h2>
                             </header>
                             <img src="{{server.proxied_thumbnail}}" width="50%" />
                             <p><strong>Language</strong>: {{server.language}}</p>
@@ -23,6 +27,7 @@
                             <p><strong>Description</strong>: {{server.description}}</p>
                             <p><strong>Total users</strong>: {{server.total_users | number}}</p>
                             <p><strong>Last week users</strong>: {{server.last_week_users | number}}</p>
+                            <p><strong>Latency</strong>: <span class="{{server.latency > 400 ? 'high' : 'low' }}">{{server.latency}} ms.</span></p>
                         </div>
                     </section>
                 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MastodonService } from '../mastodon.service';
 import { ServerInfo } from '../server';
+import Ping from 'ping-url';
 
 @Component({
   selector: 'app-servers',
@@ -14,11 +15,24 @@ export class ServersComponent {
   servers: ServerInfo[] = [];
   cachedServers: ServerInfo[] = [];
   last_mastodon_version: string = "4.0.2";
-  self = this;
 
   ngOnInit(): void {
     this.getServers();
   }
+
+  calculateLatency(): void {
+
+    this.cachedServers.forEach(s => {
+      Ping.check(`https://${s.domain}`).then(response => {
+        console.log(`status: ${response.status} time: ${response.time}`);
+        s.latency = response.time;
+      }, err => {
+        console.log(`error msg: ${err.msg}`);
+      });
+    });
+  }
+
+
   getServers(orderBy: string = 'version'): void {
     this.mastodonService.getServers().subscribe(servers => {
 
@@ -43,7 +57,8 @@ export class ServersComponent {
           this.servers = this.cachedServers;
           break;
       }
-
+      
+      this.calculateLatency();
 
     });
   }
