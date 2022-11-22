@@ -1,12 +1,12 @@
 <h1>{{servers.length}} Mastodon servers available</h1>
 <!-- <p>Here are some links to help you get started:</p> -->
 <ul class="filters">
-    <li><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)" /></li>
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')" class="isActive()">Most
+    <li style="background-color: white;"><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)" /></li>
+    <li class="{{isActive('version')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')">Most
             updated servers</a></li>
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" class="isActive()">Servers
+    <li class="{{isActive('users')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" class="isActive()">Servers
             with more users</a></li>
-    <li><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')"
+    <li class="{{isActive('usersByweek')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')"
             class="isActive()">Servers with more users by week</a></li>
 </ul>
 <div class="card-container" style="margin-top: 60px;">

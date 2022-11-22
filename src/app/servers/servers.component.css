@@ -1,22 +1,23 @@
 /* Filters */
 .filters{
     list-style: none;
+    margin-left: -60px;
 }
 
 .filters li{   
    display: inline;
    background-color: #1976d2;
    border-radius: 4px;
-   margin:5px;
+   margin:  5px 5px 5px 0px;
    padding: 10px;  
 }
 
 .filters li input[type="text"]{       
     background-color: #fff !important;
-    border:#fff;
+    border: 1px solid rgba(213, 213, 213, 0.615);
     /* border-radius: 4px;
-    margin:5px;
-    padding: 10px;   */
+    margin:5px;*/
+    padding: 10px;  
  }
 
  .high{
@@ -61,4 +62,8 @@
 
 .isSomeOld {
     background-color: chocolate;
+}
+
+.active{
+    background-color: black;
 }

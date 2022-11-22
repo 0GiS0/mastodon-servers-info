@@ -15,6 +15,7 @@ export class ServersComponent {
   servers: ServerInfo[] = [];
   cachedServers: ServerInfo[] = [];
   last_mastodon_version: string = "4.0.2";
+  active_filter: string = "";
 
   ngOnInit(): void {
     this.getServers();
@@ -34,6 +35,9 @@ export class ServersComponent {
 
 
   getServers(orderBy: string = 'version'): void {
+
+    this.active_filter = orderBy;
+
     this.mastodonService.getServers().subscribe(servers => {
 
       this.cachedServers = servers;
@@ -57,7 +61,7 @@ export class ServersComponent {
           this.servers = this.cachedServers;
           break;
       }
-      
+
       this.calculateLatency();
 
     });
@@ -87,6 +91,13 @@ export class ServersComponent {
       return "isSomeOld";
 
     return "tooOld";
+  }
+
+  isActive(filter: string): string {
+    if (filter == this.active_filter) {
+      return "active";
+    }
+    return "";
   }
 
 }
