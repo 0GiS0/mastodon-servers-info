@@ -9,5 +9,6 @@ export interface ServerInfo {
     approval_required: boolean;
     language: string;
     category: string;
+    aproval_required: boolean;
     latency: number;
 }

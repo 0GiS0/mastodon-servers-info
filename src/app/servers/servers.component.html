@@ -1,21 +1,24 @@
 <h1>{{servers.length}} Mastodon servers available</h1>
 <!-- <p>Here are some links to help you get started:</p> -->
 <ul class="filters">
-    <li style="background-color: white;"><input type="text" placeholder="Search by domain" (keydown)="searchByDomain($event)" /></li>
-    <li class="{{isActive('version')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('version')">Most
+    <li style="background-color: white;"><input type="text" placeholder="Search by domain"
+            (keydown)="searchByDomain($event)" /></li>
+    <li class="{{isActive('version')}}"><a href="#" style="text-decoration:none;color:white;"
+            (click)="getServers('version')">Most
             updated servers</a></li>
-    <li class="{{isActive('users')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('users')" class="isActive()">Servers
+    <li class="{{isActive('users')}}"><a href="#" style="text-decoration:none;color:white;"
+            (click)="getServers('users')" class="isActive()">Servers
             with more users</a></li>
-    <li class="{{isActive('usersByweek')}}"><a href="#" style="text-decoration:none;color:white;" (click)="getServers('usersByweek')"
-            class="isActive()">Servers with more users by week</a></li>
+    <li class="{{isActive('usersByweek')}}"><a href="#" style="text-decoration:none;color:white;"
+            (click)="getServers('usersByweek')" class="isActive()">Servers with more users by week</a></li>
 </ul>
-<div class="card-container" style="margin-top: 60px;">
-    <div id="features-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-4 col-12-medium" *ngFor="let server of servers">
+<div class="container" style="margin-top: 60px;">
+    <!-- <div id="wrapper"> -->
+        <!-- <div class="container"> -->
+            <!-- <div class="row"> -->
+                <div class="server" *ngFor="let server of servers">
                     <!-- Box -->
-                    <section class="box feature">
+                    <section >
                         <div class="inner">
                             <header>
                                 <h2>{{server.domain}} (v. <span
@@ -24,14 +27,16 @@
                             <img src="{{server.proxied_thumbnail}}" width="50%" />
                             <p><strong>Language</strong>: {{server.language}}</p>
                             <p><strong>Category</strong>: {{server.category}}</p>
+                            <p><strong>Approval required</strong>: {{server.approval_required}}</p>
                             <p><strong>Description</strong>: {{server.description}}</p>
                             <p><strong>Total users</strong>: {{server.total_users | number}}</p>
                             <p><strong>Last week users</strong>: {{server.last_week_users | number}}</p>
-                            <p><strong>Latency</strong>: <span class="{{server.latency > 400 ? 'high' : 'low' }}">{{server.latency}} ms.</span></p>
+                            <p><strong>Latency</strong>: <span
+                                    class="{{server.latency > 400 ? 'high' : 'low' }}">{{server.latency}} ms.</span></p>
                         </div>
                     </section>
                 </div>
-            </div>
-        </div>
-    </div>
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
 </div>
