@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MastodonService } from '../mastodon.service';
 import { ServerInfo } from '../server';
 import Ping from 'ping-url';
+import { GithubService } from '../github.service';
+import { Release } from '../release';
 
 @Component({
   selector: 'app-servers',
@@ -10,15 +12,26 @@ import Ping from 'ping-url';
 })
 export class ServersComponent {
 
-  constructor(private mastodonService: MastodonService) { }
+  constructor(private mastodonService: MastodonService, private gitHubService: GithubService) { }
 
   servers: ServerInfo[] = [];
   cachedServers: ServerInfo[] = [];
   last_mastodon_version: string = "4.0.2";
   active_filter: string = "";
+  releases: Release[] = [];
 
   ngOnInit(): void {
+    this.getReleases();
     this.getServers();
+  }
+
+
+  getReleases() {
+    this.gitHubService.getReleases().subscribe(releases => {
+      this.releases = releases;
+      console.log('releases:');
+      console.log(releases);
+    });
   }
 
   calculateLatency(): void {
@@ -95,7 +108,7 @@ export class ServersComponent {
 
   isActive(filter: string): string {
 
-    console.log(`filter: ${filter}`);
+    // console.log(`filter: ${filter}`);
 
     if (filter == this.active_filter) {
       return "active";
