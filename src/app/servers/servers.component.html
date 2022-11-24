@@ -3,7 +3,7 @@
 <ul class="filters">
     <li style="background-color: white;"><input type="text" placeholder="Search by domain"
             (keydown)="searchByDomain($event)" /></li>
-    <li class="{{isActive('version')}}"><a href="#" style="text-decoration:none;color:white;"
+    <li [ngClass]="isActive('version')"><a href="#" style="text-decoration:none;color:white;"
             (click)="getServers('version')">Most
             updated servers</a></li>
     <li class="{{isActive('users')}}"><a href="#" style="text-decoration:none;color:white;"

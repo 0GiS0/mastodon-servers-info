@@ -94,6 +94,9 @@ export class ServersComponent {
   }
 
   isActive(filter: string): string {
+
+    console.log(`filter: ${filter}`);
+
     if (filter == this.active_filter) {
       return "active";
     }
