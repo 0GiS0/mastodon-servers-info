@@ -15,6 +15,10 @@ export class GithubService {
 
     return this.http.get<Release[]>('https://api.github.com/repos/mastodon/mastodon/releases')
       .pipe(
-        tap(_ => console.log('fetched mastodon releases')));
+        tap(_ => {
+        
+          console.log('fetched mastodon releases')
+        }
+        ));
   }
 }

@@ -3,7 +3,6 @@ import { MastodonService } from '../mastodon.service';
 import { ServerInfo } from '../server';
 import Ping from 'ping-url';
 import { GithubService } from '../github.service';
-import { Release } from '../release';
 
 @Component({
   selector: 'app-servers',
@@ -15,10 +14,9 @@ export class ServersComponent {
   constructor(private mastodonService: MastodonService, private gitHubService: GithubService) { }
 
   servers: ServerInfo[] = [];
-  cachedServers: ServerInfo[] = [];
-  last_mastodon_version: string = "4.0.2";
+  cachedServers: ServerInfo[] = [];  
   active_filter: string = "";
-  releases: Release[] = [];
+  releases: string[] = [];
 
   ngOnInit(): void {
     this.getReleases();
@@ -28,9 +26,18 @@ export class ServersComponent {
 
   getReleases() {
     this.gitHubService.getReleases().subscribe(releases => {
-      this.releases = releases;
-      console.log('releases:');
       console.log(releases);
+      this.releases = releases.map(r => {
+        let base = r.name.split('v')[1];
+        return [base, `${base}+glitch`,`${base}~island`,`${base}~wxw`, `${base}+uri1.16`];        
+      }).flat();
+
+      this.releases.push("3.2.0+glitch");
+      this.releases.push("3.1.5");
+      
+
+      console.log('releases:');
+      console.log(this.releases);
     });
   }
 
@@ -38,10 +45,10 @@ export class ServersComponent {
 
     this.cachedServers.forEach(s => {
       Ping.check(`https://${s.domain}`).then(response => {
-        console.log(`status: ${response.status} time: ${response.time}`);
+        // console.log(`status: ${response.status} time: ${response.time}`);
         s.latency = response.time;
       }, err => {
-        console.log(`error msg: ${err.msg}`);
+        console.log(`error for ${s.domain}: ${err.msg}`);
       });
     });
   }
@@ -66,9 +73,7 @@ export class ServersComponent {
           });
           break;
         case 'version':
-          //Get versions
-          let versionOrder = ["4.0.2", "4.0.2+uri1.13", "4.0.1", "4.0.2+glitch", "4.0.0rc2+glitch", "4.0.0rc2", "3.5.5", "3.5.3", "3.5.3~wxw", "3.5.3+glitch", "3.5.3~island", "3.5.1", "3.4.6", "3.4.5", "3.4.1", "3.3.2", "3.2.0+glitch", "3.1.5", "3.1.3"];
-          this.servers = this.cachedServers.sort((a, b) => versionOrder.indexOf(a.version) - versionOrder.indexOf(b.version));
+          this.servers = this.cachedServers.sort((a, b) => this.releases.indexOf(a.version) - this.releases.indexOf(b.version));
           break;
         default:
           this.servers = this.cachedServers;
@@ -98,7 +103,7 @@ export class ServersComponent {
 
   howOld(mastodonVer: string): string {
 
-    if (mastodonVer == this.last_mastodon_version)
+    if (mastodonVer == this.releases[0])
       return "isOk";
     else if (mastodonVer == "3.5.5")
       return "isSomeOld";
