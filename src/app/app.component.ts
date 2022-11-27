@@ -18,6 +18,10 @@ export class AppComponent {
     const appInsights = new ApplicationInsights({
       config: {
         connectionString: 'InstrumentationKey=86f890fa-abcd-48a5-861e-9c1297f9947d;IngestionEndpoint=https://francecentral-1.in.applicationinsights.azure.com/;LiveEndpoint=https://francecentral.livediagnostics.monitor.azure.com/',
+        autoExceptionInstrumented: true,
+        enableCorsCorrelation: true,
+        enableRequestHeaderTracking: true,
+        enableResponseHeaderTracking: true,
         extensions: [angularPlugin],
         extensionConfig: {
           [angularPlugin.identifier]: { router: this.router }
